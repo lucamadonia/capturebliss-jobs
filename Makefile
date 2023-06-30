@@ -44,8 +44,8 @@ containerize:
 	***REMOVED*** aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(AWS_ORG).dkr.ecr.$(AWS_REGION).amazonaws.com
 	***REMOVED*** docker push $(ECR_IMAGE_TAG)
 
-***REMOVED*** If you are running this in local make sure in env.dev file
-***REMOVED*** DB_CONN_URL=jdbc:mysql://host.docker.internal:3306 is set otherwise the db won't be reachable via the docker network
+***REMOVED*** README If you are running this in local make sure in env.dev file
+***REMOVED*** DB_CONN_URL=host.docker.internal is set otherwise the db won't be reachable via the docker network
 container-run: export SERVICE_NAME=`jq -r '.SERVICE_NAME' service.json`
 container-run:
 	@echo "Generating env file for this run"
