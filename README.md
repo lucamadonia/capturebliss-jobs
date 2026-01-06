@@ -1,4 +1,4 @@
-***REMOVED*** Fable Jobs Service
+# Fable Jobs Service
 
 [![Version](https://img.shields.io/badge/version-2.0.16-blue.svg)](https://github.com/sharefable/sqs_jobs)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
@@ -6,25 +6,25 @@
 
 Event-driven job processor and HTTP API server for the Fable interactive demo platform. Handles AI-powered demo generation, media transcoding, analytics processing, and third-party integrations.
 
-***REMOVED******REMOVED*** What is This?
+## What is This?
 
 The **Fable Jobs Service** is a critical backend microservice that powers the Fable interactive demo product through a dual-mode architecture:
 
-***REMOVED******REMOVED******REMOVED*** SQS Message Consumer
+### SQS Message Consumer
 Continuously polls AWS SQS queues to process asynchronous jobs:
 - **AI-Powered Demo Generation** - Uses Claude AI to create interactive product demos, generate themes, and extract metadata
 - **Media Transcoding** - Converts video and audio files using AWS Elastic Transcoder
 - **Analytics Processing** - Executes scheduled data warehouse jobs against PostgreSQL
 - **Third-Party Integrations** - Syncs data to Cobalt CRM, Mailchimp, SmartLead, and custom webhooks
 
-***REMOVED******REMOVED******REMOVED*** HTTP API Server (Port 8081)
+### HTTP API Server (Port 8081)
 Provides REST endpoints for:
 - **LLM Operations** (`/v1/f/llmops`) - Real-time Claude AI interactions for demo creation and updates
 - **Audio Generation** (`/v1/f/aud/gen`) - OpenAI text-to-speech for voice-overs
 - **Slack Notifications** (`/v1/f/slack/*`) - Demo announcements and webhooks
 - **Health Checks** (`/health`) - Service monitoring
 
-***REMOVED******REMOVED*** Architecture Overview
+## Architecture Overview
 
 ```
 ┌─────────────────────────────────────────┐
@@ -51,7 +51,7 @@ Provides REST endpoints for:
    └─────────────────────────────────────┘
 ```
 
-***REMOVED******REMOVED******REMOVED*** Key Components
+### Key Components
 
 - **`src/main_msg_loop.ts`** - Core SQS polling loop with retry logic and message routing
 - **`src/http/llm-ops/`** - Claude AI integration for 7 LLM operation types (demo creation, theming, metadata extraction, content updates)
@@ -60,7 +60,7 @@ Provides REST endpoints for:
 - **`src/json-schema/`** - TypeScript definitions that generate JSON schemas for LLM function tools
 - **`src/middlewares/`** - Express middleware for Auth0 JWT verification, error handling, and logging
 
-***REMOVED******REMOVED******REMOVED*** Supported Message Types
+### Supported Message Types
 
 | Message Type | Handler | Purpose |
 |-------------|---------|---------|
@@ -71,24 +71,24 @@ Provides REST endpoints for:
 | `SUBS_UPGRADE_DOWNGRADE_SIDE_EFFECT` | `upgrade-downgrade-sideffect.ts` | Handle subscription tier changes |
 | `TRIGGER_ANALYTICS_JOB` | `analytics/event_router.ts` | Execute analytics queries and materialized view refreshes |
 
-***REMOVED******REMOVED*** Prerequisites
+## Prerequisites
 
-***REMOVED******REMOVED******REMOVED*** Runtime & Dependencies
+### Runtime & Dependencies
 - **Node.js** 18.16.1 or higher
 - **npm** 9.x or higher
 
-***REMOVED******REMOVED******REMOVED*** Databases
+### Databases
 - **MySQL** 8.0+ (operational data: jobs, demos, integrations)
 - **PostgreSQL** 12+ (analytics data warehouse)
 
-***REMOVED******REMOVED******REMOVED*** AWS Services
+### AWS Services
 - **SQS** - Message queue (ap-south-1 region)
 - **S3** - Asset storage (images, audio, demos)
 - **Elastic Transcoder** - Video/audio encoding
 - **Glue** - Data cataloging (for analytics)(legacy, now deprecated)
 - **Athena** - Analytics queries (legacy, now deprecated)
 
-***REMOVED******REMOVED******REMOVED*** Third-Party API Keys
+### Third-Party API Keys
 - **Anthropic** - Claude API for AI-powered demo generation
 - **OpenAI** - Text-to-speech for voice-overs
 - **Cobalt** (optional) - CRM integration
@@ -97,47 +97,47 @@ Provides REST endpoints for:
 - **Slack** (optional) - Notifications
 - **Auth0** - OAuth2 JWT authentication
 
-***REMOVED******REMOVED*** Installation & Setup
+## Installation & Setup
 
-***REMOVED******REMOVED******REMOVED*** 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone git@github.com:sharefable/sqs_jobs.git
 cd sqs_jobs
 ```
 
-***REMOVED******REMOVED******REMOVED*** 2. Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-***REMOVED******REMOVED******REMOVED*** 3. Configure Environment Variables
+### 3. Configure Environment Variables
 
 Create a `.env` file in the root directory with the following configuration:
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** SQS Configuration
+#### SQS Configuration
 ```bash
 SQS_Q_NAME=your-queue-name
 SQS_Q_REGION=ap-south-1
 ```
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** Database Configuration
+#### Database Configuration
 ```bash
-***REMOVED*** MySQL (Operational Database)
+# MySQL (Operational Database)
 DB_CONN_URL=mysql-host:3306
 DB_USER=your-mysql-user
 DB_PWD=your-mysql-password
 DB_DB=your-database-name
 
-***REMOVED*** PostgreSQL (Analytics Database)
+# PostgreSQL (Analytics Database)
 ANALYTICS_DB_CONN_URL=postgres-host:5432
 ANALYTICS_DB_USER=your-postgres-user
 ANALYTICS_DB_PWD=your-postgres-password
 ANALYTICS_DB_NAME=analytics
 ```
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** AWS Configuration
+#### AWS Configuration
 ```bash
 AWS_ACCESS_KEY_ID=your-aws-access-key
 AWS_SECRET_ACCESS_KEY=your-aws-secret-key
@@ -145,18 +145,18 @@ AWS_S3_REGION=ap-south-1
 AWS_ASSET_FILE_S3_BUCKET=your-s3-bucket
 AWS_ASSET_FILE_S3_BUCKET_REGION=ap-south-1
 
-***REMOVED*** Elastic Transcoder
+# Elastic Transcoder
 ETS_REGION=ap-south-1
 TRANSCODER_PIPELINE_ID=your-pipeline-id
 ```
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** AI/LLM Configuration
+#### AI/LLM Configuration
 ```bash
 ANTHORIPC_KEY=your-anthropic-api-key
 OPENAI_KEY=your-openai-api-key
 ```
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** Third-Party Integrations (Optional)
+#### Third-Party Integrations (Optional)
 ```bash
 MAILCHIMP_API_KEY=your-mailchimp-key
 MAILCHIP_SERVER_PREFIX=us1
@@ -165,19 +165,19 @@ SMART_LEAD_API_KEY=your-smartlead-key
 SLACK_FABLE_BOT_BOT_USER_TOKEN=xoxb-your-slack-token
 ```
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** API & Authentication
+#### API & Authentication
 ```bash
 API_SERVER_ENDPOINT=https://your-api-server.com
 AUTH0_AUDIENCES=https://your-auth0-audience
 AUTH0_ISSUER_URL=https://your-tenant.auth0.com/
 ```
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** Runtime Environment
+#### Runtime Environment
 ```bash
-APP_ENV=dev  ***REMOVED*** Options: dev, staging, prod
+APP_ENV=dev  # Options: dev, staging, prod
 ```
 
-***REMOVED******REMOVED******REMOVED*** 4. Generate JSON Schemas
+### 4. Generate JSON Schemas
 
 The service uses TypeScript definitions to generate JSON schemas for LLM function tools: (check Makefile for details)
 
@@ -187,13 +187,13 @@ make gen
 
 This reads files from `src/json-schema/*.ts` and generates corresponding `.json` files used by Claude AI. (check Makefile for details)
 
-***REMOVED******REMOVED******REMOVED*** 5. Build and run the Project
+### 5. Build and run the Project
 
 ```bash
 make run
 ```
 
-***REMOVED******REMOVED******REMOVED*** 6. Database Setup
+### 6. Database Setup
 
 Ensure your MySQL and PostgreSQL databases are accessible and have the necessary schemas. The service expects:
 
@@ -202,16 +202,16 @@ Ensure your MySQL and PostgreSQL databases are accessible and have the necessary
 
 By running migration of api server, you can also setup the database.
 
-***REMOVED******REMOVED*** Running Locally
+## Running Locally
 
-***REMOVED******REMOVED******REMOVED*** Development Mode (with auto-reload)
+### Development Mode (with auto-reload)
 
 ```bash
-npm run watch-ts    ***REMOVED*** Terminal 1: Watch TypeScript files
-npm run start       ***REMOVED*** Terminal 2: Start the service
+npm run watch-ts    # Terminal 1: Watch TypeScript files
+npm run start       # Terminal 2: Start the service
 ```
 
-***REMOVED******REMOVED******REMOVED*** Production Mode
+### Production Mode
 
 ```bash
 npm run build
@@ -224,18 +224,18 @@ The service will:
 3. Process up to **5 concurrent messages**
 4. Connect to MySQL and PostgreSQL databases
 
-***REMOVED******REMOVED******REMOVED*** Testing the Service
+### Testing the Service
 
 ```bash
-***REMOVED*** Health check
+# Health check
 curl http://localhost:8081/health
 
-***REMOVED*** Should return: {"status":"UP"}
+# Should return: {"status":"UP"}
 ```
 
-***REMOVED******REMOVED*** Message Processing
+## Message Processing
 
-***REMOVED******REMOVED******REMOVED*** How It Works
+### How It Works
 
 1. **Polling Loop**: Service polls SQS queue every 15 seconds
 2. **Message Retrieval**: Fetches up to 5 messages per poll
@@ -244,7 +244,7 @@ curl http://localhost:8081/health
 5. **Status Tracking**: Updates job status in MySQL database
 6. **Message Deletion**: Successful jobs are removed from queue
 
-***REMOVED******REMOVED******REMOVED*** Message Format
+### Message Format
 
 The service supports both legacy (string) and modern (JSON) SQS message formats:
 
@@ -264,33 +264,33 @@ The service supports both legacy (string) and modern (JSON) SQS message formats:
 }
 ```
 
-***REMOVED******REMOVED******REMOVED*** Error Handling
+### Error Handling
 
 - **Retryable Errors**: Network timeouts, 5xx responses - retry with exponential backoff
 - **Irrecoverable Errors**: Invalid message format, missing handlers - delete immediately
 - **Processing Failures**: Logged to database with error details for debugging
 
-***REMOVED******REMOVED******REMOVED*** Adding Custom Message Handlers
+### Adding Custom Message Handlers
 
 1. Create a new processor in `src/processors/your-handler.ts`
 2. Export a function matching signature: `(jobId: string, metadata: any) => Promise<void>`
 3. Register the handler in `src/main_msg_loop.ts` by adding to the message type router
 
-***REMOVED******REMOVED*** Deployment
+## Deployment
 
-***REMOVED******REMOVED******REMOVED*** Docker Build
+### Docker Build
 
 The service uses a multi-stage Dockerfile optimized for production. Don't run docker build directly, use Makefile command instead.
 
 ```bash
-***REMOVED*** Build the Docker image
+# Build the Docker image
 make containerize v=2.0.16
 
-***REMOVED*** Run the container
+# Run the container
 make container-run
 ```
 
-***REMOVED******REMOVED******REMOVED*** GitHub Actions Workflow
+### GitHub Actions Workflow
 
 The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 
@@ -303,7 +303,7 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 
 **Note**: ECS deployment is manual - update your ECS task definition to use the new image.
 
-***REMOVED******REMOVED******REMOVED*** Deployment Steps
+### Deployment Steps
 
 1. Update version in `package.json`
 2. Commit and push changes to `develop` branch
@@ -313,9 +313,9 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 6. Update ECS task definition with new image tag
 7. Deploy to ECS cluster
 
-***REMOVED******REMOVED*** Configuration Reference
+## Configuration Reference
 
-***REMOVED******REMOVED******REMOVED*** Required Environment Variables
+### Required Environment Variables
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -343,7 +343,7 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 | `AUTH0_ISSUER_URL` | Auth0 tenant URL | `https://fable.auth0.com/` |
 | `APP_ENV` | Runtime environment | `prod` |
 
-***REMOVED******REMOVED******REMOVED*** Optional Environment Variables
+### Optional Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -353,16 +353,16 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 | `SMART_LEAD_API_KEY` | SmartLead API key | - |
 | `SLACK_FABLE_BOT_BOT_USER_TOKEN` | Slack bot token | - |
 
-***REMOVED******REMOVED******REMOVED*** Database Connection Pooling
+### Database Connection Pooling
 
 The service uses connection pooling to optimize database performance:
 
 - **MySQL**: Max 5 concurrent connections
 - **PostgreSQL**: Max 5 concurrent connections
 
-***REMOVED******REMOVED*** Integration Points
+## Integration Points
 
-***REMOVED******REMOVED******REMOVED*** Inbound Integrations
+### Inbound Integrations
 
 | System | Purpose | Authentication |
 |--------|---------|----------------|
@@ -370,57 +370,57 @@ The service uses connection pooling to optimize database performance:
 | **Auth0** | OAuth2 JWT token verification for HTTP endpoints | JWT Bearer |
 | **AWS SQS** | Job queue for async message processing | AWS IAM |
 
-***REMOVED******REMOVED******REMOVED*** Outbound Integrations
+### Outbound Integrations
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** AI & Machine Learning
+#### AI & Machine Learning
 - **Anthropic Claude API** - Demo generation, metadata extraction, content updates
   - Model: `claude-3-5-sonnet-20240620`
   - Features: Prompt caching, multi-account fallback, function calling
 - **OpenAI API** - Text-to-speech for voice-overs
   - Voices: alloy, echo, fable, onyx, nova, shimmer
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** AWS Services
+#### AWS Services
 - **SQS** - Message queue consumption
 - **S3** - Asset storage (images, audio files, demo exports)
 - **Elastic Transcoder** - Video and audio format conversion
 - **Glue** - Data catalog for analytics
 - **Athena** - SQL queries against S3 data
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** Third-Party Services
+#### Third-Party Services
 - **Cobalt** - CRM integration for lead/contact sync and engagement tracking
 - **Mailchimp** - Email contact management and audience sync
 - **SmartLead** - Lead database integration
 - **Slack** - Demo announcements and notifications
 - **Custom Webhooks** - Generic webhook system with Handlebars templating
 
-***REMOVED******REMOVED******REMOVED******REMOVED*** Database Connections
+#### Database Connections
 - **MySQL** - Transactional operations (jobs, demos, tours, integrations)
 - **PostgreSQL** - Analytics and reporting (materialized views, metrics aggregation)
 
 
-***REMOVED******REMOVED*** Technology Stack
+## Technology Stack
 
-***REMOVED******REMOVED******REMOVED*** Runtime & Language
+### Runtime & Language
 - **Node.js** 18.16.1
 - **TypeScript** 5.1.3
 - **Express.js** 4.18 (HTTP server)
 
-***REMOVED******REMOVED******REMOVED*** Cloud & Infrastructure
+### Cloud & Infrastructure
 - **AWS SQS** - Message queue
 - **AWS S3** - Object storage
 - **AWS Elastic Transcoder** - Media encoding
 - **AWS Glue** - Data catalog (deprecated)
 - **AWS Athena** - Analytics queries (deprecated)
 
-***REMOVED******REMOVED******REMOVED*** Databases
+### Databases
 - **MySQL** 8+ (via `mysql` driver)
 - **PostgreSQL** 12+ (via `pg` driver)
 
-***REMOVED******REMOVED******REMOVED*** AI & Machine Learning
+### AI & Machine Learning
 - **Anthropic Claude** (`@anthropic-ai/sdk` ^0.27.1)
 - **OpenAI** (`openai` ^4.67.3)
 
-***REMOVED******REMOVED*** JSON Schema Generation
+## JSON Schema Generation
 
 The `src/json-schema/` directory contains TypeScript definitions that power Claude AI's function calling:
 
@@ -431,19 +431,19 @@ The `src/json-schema/` directory contains TypeScript definitions that power Clau
 
 **Important**: Never edit `.json` files directly - always modify the TypeScript source files.
 
-***REMOVED******REMOVED*** License
+## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-***REMOVED******REMOVED*** Support & Resources
+## Support & Resources
 
-***REMOVED******REMOVED******REMOVED*** Related Repositories
+### Related Repositories
 This service is part of the Fable platform ecosystem:
 - **Main Application** - Web application and client-side code
 - **API Server** - Primary REST API
 - **Jobs Service** (this repository) - Event-driven job processor
 
-***REMOVED******REMOVED******REMOVED*** Getting Help
+### Getting Help
 
 If you encounter issues or have questions:
 
