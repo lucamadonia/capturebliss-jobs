@@ -1,10 +1,8 @@
 import {init, captureCheckIn} from '@sentry/node';
 
-const DSN_KEY_JOBS = 'SENTRY_DSN_PLACEHOLDER';
-
 export const sentryInitialize = () => {
   init({
-    dsn: DSN_KEY_JOBS,
+    dsn: process.env.SENTRY_DSN,
     environment: process.env.APP_ENV,
     tracesSampleRate: 1.0,
   });

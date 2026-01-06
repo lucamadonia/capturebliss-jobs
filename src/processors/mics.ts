@@ -13,7 +13,7 @@ mailchimp.setConfig({
   server: process.env.MAILCHIP_SERVER_PREFIX,
 });
 
-const slackWebhookUrl = 'SLACK_WEBHOOK_URL_PLACEHOLDER';
+const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
 const SMART_LEAD_API_KEY = process.env.SMART_LEAD_API_KEY;
 
 const SMART_LEAD_BASE_URL = 'https://server.smartlead.ai/api/v1';

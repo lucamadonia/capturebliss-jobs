@@ -102,7 +102,7 @@ async function activityDemoEvent (payload: LeadAccessInfoOfTour) {
 }
 
 async function cobaltEventApi (eventPayload: Event, accountId: string): Promise<void>  {
-  const resp = await fetch('https://api.gocobalt.io/api/v1/webhook/COBALT_WEBHOOK_ID_PLACEHOLDER', {
+  const resp = await fetch(`https://api.gocobalt.io/api/v1/webhook/${process.env.COBALT_WEBHOOK_ID}`, {
     method: 'POST',
     headers: {
       'x-api-key': `${process.env.COBALT_API_KEY}`,
