@@ -30,7 +30,7 @@ function deleteMsgPrep(qUrl: string, id: string | undefined): () => Promise<Dele
   };
 }
 
-const INTERNAL_MESSAGE_PREFIX = '__fable_internal__';
+const INTERNAL_MESSAGE_PREFIX = '__capturebliss_internal__';
 
 function getMsgAttrMaps(attrs?: Record<string, MessageAttributeValue>): TMsgAttrs {
   attrs = attrs || {};

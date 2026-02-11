@@ -12,7 +12,7 @@ import resolveUserIfAny, {
   verifyAuthToken,
   normalizeTokenForAuthOrigin,
   restoreRawToken,
-  resolveFableUser,
+  resolveCaptureblissUser,
 } from './middlewares/resolve-principal';
 import addLlmOpsHttpListeners from './http/llm-ops';
 import addAudioOpsHttpListeners from './http/audio-ops';
@@ -46,7 +46,7 @@ const envLoadingStatus = [
   'ANALYTICS_DB_PWD',
   'API_SERVER_ENDPOINT',
   'COBALT_API_KEY',
-  'SLACK_FABLE_BOT_BOT_USER_TOKEN',
+  'SLACK_CAPTUREBLISS_BOT_USER_TOKEN',
   'SMART_LEAD_API_KEY',
   'AUTH0_AUDIENCES',
   'AUTH0_ISSUER_URL',
@@ -94,7 +94,7 @@ app.use('/v1/f/*', [
   normalizeTokenForAuthOrigin,
   resolveUserIfAny,
   restoreRawToken,
-  resolveFableUser,
+  resolveCaptureblissUser,
 ]);
 app.use(globalErrorHandler);
 

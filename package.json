@@ -1,9 +1,9 @@
 {
-  "name": "sqs_jobs",
+  "name": "capturebliss-jobs",
   "version": "2.0.16",
   "main": "index.js",
-  "repository": "git@github.com:sharefable/sqs_jobs.git",
-  "author": "akash@sharefable.com",
+  "repository": "git@github.com:capturebliss/capturebliss-jobs.git",
+  "author": "team@capturebliss.com",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -25,7 +25,7 @@
     "@aws-sdk/client-sqs": "^3.354.0",
     "@cobaltio/cobalt": "^1.0.2",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
-    "@openai/realtime-api-beta": "github:sharefable/openai-realtime-api-beta***REMOVED***96b4121dc697fd2d7b78088d592ed511abf1d445",
+    "@openai/realtime-api-beta": "github:capturebliss/openai-realtime-api-beta***REMOVED***96b4121dc697fd2d7b78088d592ed511abf1d445",
     "@sentry/node": "^7.64.0",
     "@types/string-hash": "^1.1.3",
     "body-parser": "^1.20.2",

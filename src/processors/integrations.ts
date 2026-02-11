@@ -156,7 +156,7 @@ export default async function runIntegration(event?: string | null, payload?: st
       throw new RetryableErr(`Can't find demo ${tourIdRaw}`, false);
     }
 
-    if (fatResp.platformIntegration.type === PlatformIntegrationType.FableWebhook) {
+    if (fatResp.platformIntegration.type === PlatformIntegrationType.CaptureblissWebhook) {
       let webhookBody: Record<string, any>;
       try {
         webhookBody = JSON.parse(fatResp.tenantIntegration.tenantConfig.reqBody);

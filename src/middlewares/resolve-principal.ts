@@ -34,9 +34,9 @@ export function restoreRawToken(req: Request, res: Response, next: NextFunction)
   next();
 }
 
-// TODO resolve fable user here by calling api
+// TODO resolve capturebliss user here by calling api
 // TODO incomplete
-export function resolveFableUser(req: Request, res: Response, next: NextFunction) {
+export function resolveCaptureblissUser(req: Request, res: Response, next: NextFunction) {
   // datmh -> delegate auth to main house
   if (req.headers['x-ctrl-da-mh'] === '1') {
     req.house = {

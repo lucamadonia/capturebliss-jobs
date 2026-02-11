@@ -1,14 +1,14 @@
-# Fable Jobs Service
+# Capturebliss Jobs Service
 
-[![Version](https://img.shields.io/badge/version-2.0.16-blue.svg)](https://github.com/sharefable/sqs_jobs)
+[![Version](https://img.shields.io/badge/version-2.0.16-blue.svg)](https://github.com/capturebliss/capturebliss-jobs)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-18.16.1-brightgreen.svg)](https://nodejs.org)
 
-Event-driven job processor and HTTP API server for the Fable interactive demo platform. Handles AI-powered demo generation, media transcoding, analytics processing, and third-party integrations.
+Event-driven job processor and HTTP API server for the Capturebliss interactive demo platform. Handles AI-powered demo generation, media transcoding, analytics processing, and third-party integrations.
 
 ## What is This?
 
-The **Fable Jobs Service** is a critical backend microservice that powers the Fable interactive demo product through a dual-mode architecture:
+The **Capturebliss Jobs Service** is a critical backend microservice that powers the Capturebliss interactive demo product through a dual-mode architecture:
 
 ### SQS Message Consumer
 Continuously polls AWS SQS queues to process asynchronous jobs:
@@ -102,8 +102,8 @@ Provides REST endpoints for:
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:sharefable/sqs_jobs.git
-cd sqs_jobs
+git clone git@github.com:capturebliss/capturebliss-jobs.git
+cd capturebliss-jobs
 ```
 
 ### 2. Install Dependencies
@@ -162,7 +162,7 @@ MAILCHIMP_API_KEY=your-mailchimp-key
 MAILCHIP_SERVER_PREFIX=us1
 COBALT_API_KEY=your-cobalt-key
 SMART_LEAD_API_KEY=your-smartlead-key
-SLACK_FABLE_BOT_BOT_USER_TOKEN=xoxb-your-slack-token
+SLACK_CAPTUREBLISS_BOT_USER_TOKEN=xoxb-your-slack-token
 ```
 
 #### API & Authentication
@@ -319,12 +319,12 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `SQS_Q_NAME` | AWS SQS queue name | `fable-jobs-prod` |
+| `SQS_Q_NAME` | AWS SQS queue name | `capturebliss-jobs-prod` |
 | `SQS_Q_REGION` | AWS region for SQS | `ap-south-1` |
 | `DB_CONN_URL` | MySQL host and port | `mysql.example.com:3306` |
-| `DB_USER` | MySQL username | `fable_user` |
+| `DB_USER` | MySQL username | `capturebliss_user` |
 | `DB_PWD` | MySQL password | `secure_password` |
-| `DB_DB` | MySQL database name | `fable_prod` |
+| `DB_DB` | MySQL database name | `capturebliss_prod` |
 | `ANALYTICS_DB_CONN_URL` | PostgreSQL host and port | `postgres.example.com:5432` |
 | `ANALYTICS_DB_USER` | PostgreSQL username | `analytics_user` |
 | `ANALYTICS_DB_PWD` | PostgreSQL password | `secure_password` |
@@ -332,15 +332,15 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 | `AWS_ACCESS_KEY_ID` | AWS access key | `AKIA...` |
 | `AWS_SECRET_ACCESS_KEY` | AWS secret key | `...` |
 | `AWS_S3_REGION` | S3 bucket region | `ap-south-1` |
-| `AWS_ASSET_FILE_S3_BUCKET` | S3 bucket for assets | `fable-assets-prod` |
+| `AWS_ASSET_FILE_S3_BUCKET` | S3 bucket for assets | `capturebliss-assets-prod` |
 | `AWS_ASSET_FILE_S3_BUCKET_REGION` | Asset bucket region | `ap-south-1` |
 | `ETS_REGION` | Elastic Transcoder region | `ap-south-1` |
 | `TRANSCODER_PIPELINE_ID` | ETS pipeline ID | `1234567890123-abcdef` |
 | `ANTHORIPC_KEY` | Anthropic API key | `sk-ant-...` |
 | `OPENAI_KEY` | OpenAI API key | `sk-...` |
-| `API_SERVER_ENDPOINT` | Main API server URL | `https://api.fable.com` |
-| `AUTH0_AUDIENCES` | Auth0 API audience | `https://api.fable.com` |
-| `AUTH0_ISSUER_URL` | Auth0 tenant URL | `https://fable.auth0.com/` |
+| `API_SERVER_ENDPOINT` | Main API server URL | `https://api.capturebliss.com` |
+| `AUTH0_AUDIENCES` | Auth0 API audience | `https://api.capturebliss.com` |
+| `AUTH0_ISSUER_URL` | Auth0 tenant URL | `https://capturebliss.auth0.com/` |
 | `APP_ENV` | Runtime environment | `prod` |
 
 ### Optional Environment Variables
@@ -351,7 +351,7 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 | `MAILCHIP_SERVER_PREFIX` | Mailchimp server prefix | `us1` |
 | `COBALT_API_KEY` | Cobalt CRM API key | - |
 | `SMART_LEAD_API_KEY` | SmartLead API key | - |
-| `SLACK_FABLE_BOT_BOT_USER_TOKEN` | Slack bot token | - |
+| `SLACK_CAPTUREBLISS_BOT_USER_TOKEN` | Slack bot token | - |
 
 ### Database Connection Pooling
 
@@ -438,7 +438,7 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 ## Support & Resources
 
 ### Related Repositories
-This service is part of the Fable platform ecosystem:
+This service is part of the Capturebliss platform ecosystem:
 - **Main Application** - Web application and client-side code
 - **API Server** - Primary REST API
 - **Jobs Service** (this repository) - Event-driven job processor
@@ -451,5 +451,5 @@ If you encounter issues or have questions:
 2. **Environment Variables** - Verify all required variables are set correctly
 3. **Database Connectivity** - Ensure MySQL and PostgreSQL are accessible
 4. **AWS Permissions** - Confirm IAM credentials have necessary permissions
-5. **Raise an Issue** - [Create an issue](https://github.com/sharefable/sqs_jobs/issues) on GitHub
+5. **Raise an Issue** - [Create an issue](https://github.com/capturebliss/capturebliss-jobs/issues) on GitHub
 

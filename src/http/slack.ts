@@ -162,7 +162,7 @@ async function unFurlSlackContent(urls: URL[], opts: {
     const resp = await fetch(encodeURI(url), {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.SLACK_FABLE_BOT_BOT_USER_TOKEN}`,
+        Authorization: `Bearer ${process.env.SLACK_CAPTUREBLISS_BOT_USER_TOKEN}`,
       },
     });
 

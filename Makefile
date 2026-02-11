@@ -18,11 +18,11 @@ run:
 
 purge-queue:
 	aws sqs purge-queue \
-		--queue-url https://sqs.ap-south-1.amazonaws.com/556055615522/tour_app_queue
+		--queue-url https://sqs.ap-south-1.amazonaws.com/556055615522/capturebliss_queue
 
 test-run-job:
 	aws sqs send-message \
-		--queue-url https://sqs.ap-south-1.amazonaws.com/556055615522/tour_app_queue \
+		--queue-url https://sqs.ap-south-1.amazonaws.com/556055615522/capturebliss_queue \
 		--message-body 'SUBS_UPGRADE_DOWNGRADE_SIDE_EFFECT' \
 		--message-attributes '{"orgIdStr": {"DataType": "String", "StringValue": "49"}, "beforePlan": {"DataType": "String", "StringValue": "SOLO"}, "afterPlan": {"DataType": "String", "StringValue": "BUSINESS"} }'
 
@@ -68,4 +68,4 @@ container-run: export SERVICE_NAME=`jq -r '.SERVICE_NAME' service.json`
 container-run:
 	@echo "Generating env file for this run"
 	sed -r 's/^export[[:space:]]+//' env.now > env.dkr
-	docker rm sqs-jobs; docker run --name sqs-jobs --env-file env.dkr -p 8081:8081 ${SERVICE_NAME}
+	docker rm capturebliss-jobs; docker run --name capturebliss-jobs --env-file env.dkr -p 8081:8081 ${SERVICE_NAME}

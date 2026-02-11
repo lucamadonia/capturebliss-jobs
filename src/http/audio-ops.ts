@@ -86,7 +86,7 @@ export default function addHttpListeners(app: Express) {
       const charLen = displayText.length;
       const per1kChar = Math.ceil(charLen / 1000);
       api<ReqDeductCredit, null>('/f/deductcredit', 'POST', {
-        // https://sharefable.slack.com/archives/C04998WM23F/p1729171341630929?thread_ts=1729170927.545179&cid=C04998WM23F
+        // Credit deduction: 0.5 credits per 1k characters
         deductBy: Math.ceil(per1kChar * 0.5),
         creditType: SubscriptionCreditType.AI_CREDIT,
       },
