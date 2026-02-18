@@ -10,7 +10,7 @@ import RetryableErr from '../retryable-err';
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIP_SERVER_PREFIX,
+  server: process.env.MAILCHIMP_SERVER_PREFIX,
 });
 
 const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
@@ -41,14 +41,14 @@ export const processEventsForDestination = async (utProps: TMsgAttrs) => {
       case NfEvents.NEW_USER_SIGNUP: {
         text = `\`\`\`\nevent_name: ${props.eventName}${payloadVarStr}\nenv: ${process.env.APP_ENV}\n\`\`\``;
         await Promise.all([
-          notifySlack(slackWebhookUrl, text),
+          notifySlack(slackWebhookUrl || '', text),
         ]);
         break;
-      } 
+      }
 
       case NfEvents.EBOOK_DOWNLOAD: {
         text = `\`\`\`\nevent_name: ${props.eventName}${payloadVarStr}\nenv: ${process.env.APP_ENV}\n\`\`\``;
-        await notifySlack(slackWebhookUrl, text);
+        await notifySlack(slackWebhookUrl || '', text);
         break;
       }
 

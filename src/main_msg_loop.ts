@@ -16,7 +16,10 @@ import { MysqlError } from 'mysql';
 import { routeAnalyticsJob } from './analytics/event_router';
 import { upgradeDowngradeSideEffect } from './processors/upgrade-downgrade-sideffect';
 
-export const sqsClient = new SQS({ region: process.env.SQS_Q_REGION });
+export const sqsClient = new SQS({
+  region: process.env.SQS_Q_REGION,
+  ...(process.env.AWS_ENDPOINT_URL ? { endpoint: process.env.AWS_ENDPOINT_URL } : {}),
+});
 export const qUrlResp = sqsClient.getQueueUrl({ QueueName: process.env.SQS_Q_NAME });
 
 let url: string | undefined;

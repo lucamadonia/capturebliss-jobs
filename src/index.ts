@@ -31,7 +31,7 @@ const envLoadingStatus = [
   'SQS_Q_REGION',
   'SQS_Q_NAME',
   'MAILCHIMP_API_KEY',
-  'MAILCHIP_SERVER_PREFIX',
+  'MAILCHIMP_SERVER_PREFIX',
   'DB_CONN_URL',
   'DB_USER',
   'DB_PWD',
@@ -50,7 +50,7 @@ const envLoadingStatus = [
   'SMART_LEAD_API_KEY',
   'AUTH0_AUDIENCES',
   'AUTH0_ISSUER_URL',
-  'ANTHORIPC_KEY',
+  'ANTHROPIC_KEY',
   'OPENAI_KEY',
 ].reduce(( status, name ) => {
   if (process.env[name]) status[name] = 'ok';

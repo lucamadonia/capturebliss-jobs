@@ -152,14 +152,14 @@ TRANSCODER_PIPELINE_ID=your-pipeline-id
 
 #### AI/LLM Configuration
 ```bash
-ANTHORIPC_KEY=your-anthropic-api-key
+ANTHROPIC_KEY=your-anthropic-api-key
 OPENAI_KEY=your-openai-api-key
 ```
 
 #### Third-Party Integrations (Optional)
 ```bash
 MAILCHIMP_API_KEY=your-mailchimp-key
-MAILCHIP_SERVER_PREFIX=us1
+MAILCHIMP_SERVER_PREFIX=us1
 COBALT_API_KEY=your-cobalt-key
 SMART_LEAD_API_KEY=your-smartlead-key
 SLACK_CAPTUREBLISS_BOT_USER_TOKEN=xoxb-your-slack-token
@@ -336,7 +336,7 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 | `AWS_ASSET_FILE_S3_BUCKET_REGION` | Asset bucket region | `ap-south-1` |
 | `ETS_REGION` | Elastic Transcoder region | `ap-south-1` |
 | `TRANSCODER_PIPELINE_ID` | ETS pipeline ID | `1234567890123-abcdef` |
-| `ANTHORIPC_KEY` | Anthropic API key | `sk-ant-...` |
+| `ANTHROPIC_KEY` | Anthropic API key | `sk-ant-...` |
 | `OPENAI_KEY` | OpenAI API key | `sk-...` |
 | `API_SERVER_ENDPOINT` | Main API server URL | `https://api.capturebliss.com` |
 | `AUTH0_AUDIENCES` | Auth0 API audience | `https://api.capturebliss.com` |
@@ -348,7 +348,7 @@ The repository includes a CI/CD pipeline (`.github/workflows/main.yml`) that:
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `MAILCHIMP_API_KEY` | Mailchimp API key | - |
-| `MAILCHIP_SERVER_PREFIX` | Mailchimp server prefix | `us1` |
+| `MAILCHIMP_SERVER_PREFIX` | Mailchimp server prefix | `us1` |
 | `COBALT_API_KEY` | Cobalt CRM API key | - |
 | `SMART_LEAD_API_KEY` | SmartLead API key | - |
 | `SLACK_CAPTUREBLISS_BOT_USER_TOKEN` | Slack bot token | - |

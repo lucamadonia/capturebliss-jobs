@@ -19,7 +19,13 @@ interface AnnotationConfig extends Record<string, any> {
 } 
 type AnnotationMap = Record<string, AnnotationConfig>;
 
-export const s3 = new S3Client({ region: process.env.AWS_ASSET_FILE_S3_BUCKET_REGION });
+export const s3 = new S3Client({
+  region: process.env.AWS_ASSET_FILE_S3_BUCKET_REGION,
+  ...(process.env.AWS_ENDPOINT_URL ? {
+    endpoint: process.env.AWS_ENDPOINT_URL,
+    forcePathStyle: true,
+  } : {}),
+});
 
 const cache = new CachedData<AnnotationMap>(async (fileKey: string) => {
   const {Body: body0} = await s3.send(new GetObjectCommand({
