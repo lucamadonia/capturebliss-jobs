@@ -2,13 +2,14 @@ name: Build & Deploy Jobs
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
   pull_request:
-    branches: [main]
+    branches: [develop]
 
 env:
   NODE_VERSION: "18"
   ECR_REPOSITORY: capturebliss-jobs
+  AWS_REGION: eu-central-1
 
 jobs:
   test:
@@ -30,7 +31,7 @@ jobs:
 
   build-and-deploy:
     needs: test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -41,7 +42,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
+          aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -57,11 +58,9 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
       - name: Deploy to ECS
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
         run: |
           aws ecs update-service \
-            --cluster capturebliss-cluster \
-            --service capturebliss-jobs \
-            --force-new-deployment
+            --cluster capturebliss-production-cluster \
+            --service capturebliss-production-jobs \
+            --force-new-deployment \
+            --region ${{ env.AWS_REGION }}
