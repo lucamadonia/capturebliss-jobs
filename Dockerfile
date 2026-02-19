@@ -13,7 +13,7 @@ RUN npm run gen
 RUN npm run build
 
 FROM node:18-alpine3.18
-RUN apk add graphicsmagick
+RUN apk add graphicsmagick git
 WORKDIR /usr/capturebliss-jobs
 COPY package*.json ./
 RUN npm install --only=production
